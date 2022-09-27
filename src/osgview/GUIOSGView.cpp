@@ -152,6 +152,7 @@ GUIOSGView::GUIOSGView(
 
     myViewer = new osgViewer::Viewer();
     myViewer->getCamera()->setGraphicsContext(myAdapter);
+    myViewer->getCamera()->setClearColor(osg::Vec4(0.0f, 0.5f, 0.0f, 0.0f));
     myViewer->getCamera()->setViewport(0, 0, w, h);
     myViewer->getCamera()->setNearFarRatio(0.005);
     myViewer->setThreadingModel(osgViewer::Viewer::SingleThreaded);
@@ -1031,7 +1032,7 @@ GUIOSGView::PickHandler::handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActi
             if (myParent->makeCurrent()) {
                 std::vector<GUIGlObject*> objects = myParent->getGUIGlObjectsUnderCursor();
                 if (objects.size() > 0) {
-                    myParent->openObjectDialog(objects);                   
+                    myParent->openObjectDialog(objects);
                 }
                 myParent->makeNonCurrent();
             }

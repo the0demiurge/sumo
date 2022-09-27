@@ -204,6 +204,7 @@ GUIOSGBuilder::buildOSGEdgeGeometry(const MSEdge& edge,
         osg::ref_ptr<osg::StateSet> ss = geode->getOrCreateStateSet();
         ss->setRenderingHint(osg::StateSet::TRANSPARENT_BIN);
         ss->setMode(GL_BLEND, osg::StateAttribute::OVERRIDE | osg::StateAttribute::PROTECTED | osg::StateAttribute::ON);
+        ss->setMode(GL_RESCALE_NORMAL, osg::StateAttribute::ON);
 
         if (shape.size() > 2) {
             tessellator.retessellatePolygons(*geom);
@@ -254,6 +255,7 @@ GUIOSGBuilder::buildOSGJunctionGeometry(GUIJunctionWrapper& junction,
     osg::ref_ptr<osg::StateSet> ss = geode->getOrCreateStateSet();
     ss->setRenderingHint(osg::StateSet::TRANSPARENT_BIN);
     ss->setMode(GL_BLEND, osg::StateAttribute::OVERRIDE | osg::StateAttribute::PROTECTED | osg::StateAttribute::ON);
+    ss->setMode(GL_RESCALE_NORMAL, osg::StateAttribute::ON);
 
     if (shape.size() > 4) {
         tessellator.retessellatePolygons(*geom);
@@ -565,15 +567,16 @@ GUIOSGBuilder::createTrafficLightState(const GUISUMOAbstractView::Decal& d, osg:
         osg::ref_ptr<osg::StateSet> ss = shape->getOrCreateStateSet();
         ss->setRenderingHint(osg::StateSet::TRANSPARENT_BIN);
         ss->setMode(GL_BLEND, osg::StateAttribute::OVERRIDE | osg::StateAttribute::PROTECTED | osg::StateAttribute::ON);
+        ss->setMode(GL_RESCALE_NORMAL, osg::StateAttribute::ON);
         shape->setColor(color);
         osg::PositionAttitudeTransform* ellipse = new osg::PositionAttitudeTransform();
         ellipse->addChild(geode);
         ellipse->setPosition(center);
         ellipse->setPivotPoint(center);
         if (withPole) {
-            ellipse->setScale(osg::Vec3d(4., 4., 2.5 * d.altitude + 1.1));
+            ellipse->setScale(osg::Vec3d(4., 4., 2.5 * d.altitude + 4.));
         } else {
-            ellipse->setScale(osg::Vec3d(4., 4., 1.1));
+            ellipse->setScale(osg::Vec3d(4., 4., 4.));
         }
         ellipse->setNodeMask(nodeMask);
         ret->addChild(ellipse);
@@ -587,6 +590,7 @@ GUIOSGBuilder::setShapeState(osg::ref_ptr<osg::ShapeDrawable> shape) {
     osg::ref_ptr<osg::StateSet> ss = shape->getOrCreateStateSet();
     ss->setRenderingHint(osg::StateSet::TRANSPARENT_BIN);
     ss->setMode(GL_BLEND, osg::StateAttribute::OVERRIDE | osg::StateAttribute::PROTECTED | osg::StateAttribute::ON);
+    ss->setMode(GL_RESCALE_NORMAL, osg::StateAttribute::ON);
 }
 
 
@@ -628,6 +632,7 @@ GUIOSGBuilder::buildMovable(const MSVehicleType& type) {
         ss->setAttribute(m.mat, osg::StateAttribute::ON | osg::StateAttribute::OVERRIDE | osg::StateAttribute::PROTECTED);
         ss->setRenderingHint(osg::StateSet::TRANSPARENT_BIN);
         ss->setMode(GL_BLEND, osg::StateAttribute::OVERRIDE | osg::StateAttribute::PROTECTED | osg::StateAttribute::ON);
+        ss->setMode(GL_RESCALE_NORMAL, osg::StateAttribute::ON);
     }
     m.lights = new osg::Switch();
     for (double offset = -0.3; offset < 0.5; offset += 0.6) {
