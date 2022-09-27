@@ -495,8 +495,9 @@ MSFrame::fillOptions() {
     oc.addDescription("use-stop-ended", "Processing", "Override stop until times with stop ended times when given");
 
     // pedestrian model
-    oc.doRegister("pedestrian.model", new Option_String("striping"));
-    oc.addDescription("pedestrian.model", "Processing", "Select among pedestrian models ['nonInteracting', 'striping', 'remote']");
+    oc.doRegister("pedestrian.model", new Option_String("socialforce"));
+    // oc.doRegister("pedestrian.model", new Option_String("striping"));
+    oc.addDescription("pedestrian.model", "Processing", "Select among pedestrian models ['nonInteracting', 'socialforce', 'striping', 'remote']");
 
     oc.doRegister("pedestrian.striping.stripe-width", new Option_Float(0.64));
     oc.addDescription("pedestrian.striping.stripe-width", "Processing", "Width of parallel stripes for segmenting a sidewalk (meters) for use with model 'striping'");

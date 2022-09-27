@@ -9,6 +9,8 @@ set(microsim_transportables_STAT_SRCS
         MSPerson.h
         MSPModel.cpp
         MSPModel.h
+        MSPModel_SocialForce.cpp
+        MSPModel_SocialForce.h
         MSPModel_Striping.cpp
         MSPModel_Striping.h
         MSPModel_NonInteracting.cpp

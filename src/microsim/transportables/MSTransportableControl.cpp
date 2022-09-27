@@ -31,6 +31,7 @@
 #include <microsim/transportables/MSStageDriving.h>
 #include <microsim/transportables/MSPModel_NonInteracting.h>
 #include <microsim/transportables/MSPModel_Striping.h>
+#include <microsim/transportables/MSPModel_SocialForce.h>
 #include <microsim/transportables/MSTransportableControl.h>
 #include <microsim/devices/MSDevice_Vehroutes.h>
 #include <microsim/MSNet.h>
@@ -58,7 +59,9 @@ MSTransportableControl::MSTransportableControl(const bool isPerson):
     if (isPerson) {
         const std::string model = oc.getString("pedestrian.model");
         myNonInteractingModel = new MSPModel_NonInteracting(oc, net);
-        if (model == "striping") {
+        if (model == "socialforce") {
+            myMovementModel = new MSPModel_SocialForce(oc, net);
+        } else if (model == "striping") {
             myMovementModel = new MSPModel_Striping(oc, net);
         } else if (model == "nonInteracting") {
             myMovementModel = myNonInteractingModel;

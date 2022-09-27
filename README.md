@@ -1,6 +1,6 @@
 <a href="https://sumo.dlr.de/docs"><p align="center"><img width=50% src="https://raw.githubusercontent.com/eclipse/sumo/main/docs/web/docs/images/sumo-logo.svg"></p></a>
 
-Eclipse SUMO - Simulation of Urban MObility 
+Eclipse SUMO - Simulation of Urban MObility
 ===========================================
 [![Windows](https://github.com/eclipse/sumo/actions/workflows/build-windows.yml/badge.svg)](https://github.com/eclipse/sumo/actions/workflows/build-windows.yml)
 [![Linux](https://github.com/eclipse/sumo/actions/workflows/build-linux.yml/badge.svg)](https://github.com/eclipse/sumo/actions/workflows/build-linux.yml)
@@ -8,6 +8,12 @@ Eclipse SUMO - Simulation of Urban MObility
 ![Repo Size](https://img.shields.io/github/repo-size/eclipse/sumo.svg)
 
 <!-- [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/eclipse/sumo?svg=true)](https://ci.appveyor.com/project/eclipsewebmaster/sumo) -->
+
+Modifications:
+
+1. Enhanced sumo-gui's OSG-View
+2. Adding a social-force pedestrian model
+
 
 What is SUMO
 ------------
